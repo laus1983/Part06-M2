@@ -1,3 +1,22 @@
 #logoHenry {
   margin-right: 20px;
 }
+
+.container {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: grey;
+}
+
+.imagen {
+  display: flex;
+  justify-content: left;
+  margin-right: 20px;
+}
+
+.navbar-brand {
+  color: white;
+}
