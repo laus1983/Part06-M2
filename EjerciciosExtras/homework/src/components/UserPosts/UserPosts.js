@@ -1,19 +1,35 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './UserPosts.css';
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { connect } from "react-redux";
+import "./UserPosts.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { getAllUserPosts } from "../../actions";
+import {
+  mapDispatchToProps,
+  mapStateToProps,
+} from "../CommentsPost/CommentsPost";
+import { getUserPosts } from "../../actions";
 
 export class UserPosts extends React.Component {
-
+  componentDidMount() {
+    const userid = this.props.id;
+    getAllUserPosts(userid);
+  }
   render() {
-   
+    const userid = this.props.id;
     return (
       <div className="details">
-        <h4 className="title">Posts del usuario {/*userid*/}</h4>
-        
+        <h4 className="title">Posts del usuario {userid}</h4>
+        <ul className="list">
+          {this.props.userPosts.map((post) => (
+            <li key={post.id}>
+              <Link to={`/posts/${post.id}`}>{post.title}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    )
+    );
   }
 }
 
-
-export default UserPosts;
+export default connect(mapStateToProps, mapDispatchToProps)(UserPosts);
