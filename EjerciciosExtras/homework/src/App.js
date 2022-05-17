@@ -1,5 +1,5 @@
 import React from "react";
-// import Buscador from "./components/Buscador/Buscador";
+import Buscador from "./components/Buscador/Buscador";
 
 import NavBar from "./components/NavBar/NavBar";
 import UserPosts from "./components/UserPosts/UserPosts";
@@ -10,7 +10,7 @@ function App() {
   return (
       <React.Fragment>
          <NavBar />
-         {/* <Buscador/> */}
+         <Buscador/>
          <Users/>
          <UserPosts/>
 

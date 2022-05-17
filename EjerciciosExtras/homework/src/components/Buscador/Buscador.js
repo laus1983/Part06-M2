@@ -23,7 +23,7 @@ export class Buscador extends Component {
   }
 
   render() {
-    const { postsSearch } = this.state;
+    const { postsSearch } = this.props;
     return (
       <div className="details">
         <h2>Buscador</h2>

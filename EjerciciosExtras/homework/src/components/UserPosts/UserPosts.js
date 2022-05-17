@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import "./UserPosts.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllUserPosts } from "../../actions";
-import {
-  mapDispatchToProps,
-  mapStateToProps,
-} from "../CommentsPost/CommentsPost";
-import { getUserPosts } from "../../actions";
+// import {
+//   mapDispatchToProps,
+//   mapStateToProps,
+// } from "../CommentsPost/CommentsPost";
+//import { getUserPosts } from "../../actions";
 
 export class UserPosts extends React.Component {
   componentDidMount() {
@@ -16,10 +16,10 @@ export class UserPosts extends React.Component {
     getAllUserPosts(userid);
   }
   render() {
-    const userid = this.props.id;
+    //const userid = this.props.id;
     return (
       <div className="details">
-        <h4 className="title">Posts del usuario {userid}</h4>
+        <h4 className="title">Posts del usuario {this.props.userid}</h4>
         <ul className="list">
           {this.props.userPosts.map((post) => (
             <li key={post.id}>
@@ -32,4 +32,15 @@ export class UserPosts extends React.Component {
   }
 }
 
+export function mapStateToProps(state) {
+  return {
+    userPosts: state.userPosts,
+  };
+}
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    getAllUserPosts: (userid) => dispatch(getAllUserPosts(userid)),
+  };
+}
 export default connect(mapStateToProps, mapDispatchToProps)(UserPosts);
